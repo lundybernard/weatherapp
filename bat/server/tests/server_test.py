@@ -13,14 +13,36 @@ SRC = 'bat.server.server'
 
 class TestFlaskApp(TestCase):
 
-    def test_get_root(t):
-        client = app.test_client()
+    def setUp(t):
+        t.client = app.test_client()
 
-        res = client.get('/')
+    def test_get_root(t):
+        res = t.client.get('/')
         t.assertEqual(res.status_code, 200)
         t.assertEqual(
             res.get_data(as_text=True),
             'Hello World!'
+        )
+
+    def test_get_temperature(t):
+        res = t.client.get('/temperature')
+        t.assertEqual(
+            res.get_data(as_text=True),
+            '+ VALID +'
+        )
+
+    def test_get_presure(t):
+        res = t.client.get('/presure')
+        t.assertEqual(
+            res.get_data(as_text=True),
+            '+ VALID +'
+        )
+
+    def test_get_wind(t):
+        res = t.client.get('/wind')
+        t.assertEqual(
+            res.get_data(as_text=True),
+            '+ VALID +'
         )
 
 
