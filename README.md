@@ -36,20 +36,20 @@ pytest functional_tests/service_test.py
 Install the package
 
 ```
-python setup.py install
+poetry install
 python setup.py develop
 ```
 
 start webserver with cli
 
 ```
-bat start
+bat server start
 ```
 
 Run functional tests
 
 ```
-bat test service
+bat run_functional_tests
 pytest functional_tests/service_test.py
 ```
 
@@ -68,6 +68,11 @@ pytest functional_tests/service_test.py
 #### Automatic test
 container_test will run docker-compose before each test case,
 and execute the test against the running container
+
+Currently non-functional due to docker-compose compatibility issues.
+
+Until this is resolved, use the previous method to run the server
+and test using `functional_tests/service_test.py`
 
 ```
 python -m unittest container_tests/container_test.py

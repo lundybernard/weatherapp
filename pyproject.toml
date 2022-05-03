@@ -17,7 +17,7 @@ license = 'MIT'
 bat = 'bat.cli:BATCLI'
 
 [tool.poetry.dependencies]
-python = '^3.8'
+python = '3.10'
 batconf = '*'
 flask = '*'
 connexion = '*'
@@ -27,7 +27,9 @@ pyyaml = '*'
 [tool.poetry.dev-dependencies]
 setuptools = '*'
 pytest = '*'
-
+pytest-cov = '*'
+coverage = '*'
+docker-compose = '*'
 
 [tool.pytest.ini_options]
 addopts = "--cov=bat --cov-report html --cov-fail-under=100"
