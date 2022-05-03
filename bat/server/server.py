@@ -31,8 +31,6 @@ def wind_api():
     return get_wind()
 
 
-
-
 def start_server(host='0.0.0.0', port='5000', debug=True):
     app.run(host=host, port=port, debug=debug)
 
