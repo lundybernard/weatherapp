@@ -19,3 +19,30 @@ paths:
         responses:
             '200':
                 description: OK
+
+  /temperature:
+    get:
+        summary: returns temperature record
+        description: Return the temperature record for a given location
+        operationId: bat.lib.get_temperature
+        responses:
+            '200':
+                description: OK
+
+  /presure:
+    get:
+        summary: returns presure record
+        description: Return the presure record for a given location
+        operationId: bat.lib.get_presure
+        responses:
+            '200':
+                description: OK
+
+  /wind:
+    get:
+        summary: returns wind record
+        description: Return the wind record for a given location
+        operationId: bat.lib.get_wind
+        responses:
+            '200':
+                description: OK

@@ -5,7 +5,7 @@ def hello_world():
 
 
 def get_temperature():
-    raise NotImplementedError
+    return "dummy temperature value"
 
 
 def get_presure():
