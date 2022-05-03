@@ -4,11 +4,24 @@ example python microservice project
 [![Build Status](https://travis-ci.org/lundybernard/project_template.svg?branch=master)](https://travis-ci.org/lundybernard/project_template)
 
 ## Installation
+or Install dev dependencies with poetry:
+
+```
+poetry install
+```
+
 install in developer mode from source
 
 ```
 python setup.py develop
 ```
+
+standard installation
+
+```
+pip install .
+```
+
 
 ### Install latest batconf from github branch
 
