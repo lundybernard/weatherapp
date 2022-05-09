@@ -7,19 +7,24 @@ def hello_world():
     return 'Hello World!'
 
 
-def get_temperature():
-    return "dummy temperature value"
+def get_temperature(location: str):
+    cfg = get_config()
+    cfg.noaaclient.location = location
+    noaa = NOAAClient.from_config(cfg.noaaclient)
+    return noaa.temperature
 
 
 def get_presure(location: str):
     '''WIP: config bug causing default noaaclient.source to return None
     '''
     cfg = get_config()
-    noaa = NOAAClient(cfg.noaaclient)
-
-    noaa.location = location
+    cfg.noaaclient.location = location
+    noaa = NOAAClient.from_config(cfg.noaaclient)
     return noaa.presure
 
 
-def get_wind():
-    raise NotImplementedError
+def get_wind(location: str):
+    cfg = get_config()
+    cfg.noaaclient.location = location
+    noaa = NOAAClient.from_config(cfg.noaaclient)
+    return noaa.wind

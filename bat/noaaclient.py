@@ -20,8 +20,8 @@ class NOAAClient:
         self.source = source
 
     @classmethod
-    def from_config(cls, conf: Config) -> 'NOAAClient':
-        return cls(conf.location, conf.source)
+    def from_config(cls, cfg: Config) -> 'NOAAClient':
+        return cls(cfg.location, cfg.source)
 
     @property
     def temperature(self) -> str:

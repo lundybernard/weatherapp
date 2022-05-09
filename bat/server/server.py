@@ -16,19 +16,20 @@ def hello_api():
     return hello_world()
 
 
-@app.route('/temperature')
-def temperature_api():
-    return get_temperature()
+# TODO: Refactor into a single route that accepts location and value parameters
+@app.route('/temperature/<location>')
+def temperature_api(location: str = None) -> str:
+    return get_temperature(location)
 
 
-@app.route('/presure')
-def presure_api():
-    return get_presure()
+@app.route('/presure/<location>')
+def presure_api(location: str = None) -> str:
+    return get_presure(location)
 
 
-@app.route('/wind')
-def wind_api():
-    return get_wind()
+@app.route('/wind/<location>')
+def wind_api(location: str = None) -> str:
+    return get_wind(location)
 
 
 def start_server(host='0.0.0.0', port='5000', debug=True):

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 from ..server import (
     app,
@@ -24,25 +24,43 @@ class TestFlaskApp(TestCase):
             'Hello World!'
         )
 
-    def test_get_temperature(t):
-        res = t.client.get('/temperature')
+    @patch(f'{SRC}.get_temperature', autospec=True)
+    def test_get_temperature(t, get_temperature: Mock) -> None:
+        location_id = 'loc1'
+        get_temperature.return_value = 'temperature value'
+
+        res = t.client.get(f'/temperature/{location_id}')
+
+        get_temperature.assert_called_with(location_id)
         t.assertEqual(
             res.get_data(as_text=True),
-            '+ VALID +'
+            get_temperature.return_value
         )
 
-    def test_get_presure(t):
-        res = t.client.get('/presure')
+    @patch(f'{SRC}.get_presure', autospec=True)
+    def test_get_presure(t, get_presure: Mock) -> None:
+        location_id = 'loc1'
+        get_presure.return_value = 'presure value'
+
+        res = t.client.get('/presure/loc1')
+
+        get_presure.assert_called_with(location_id)
         t.assertEqual(
             res.get_data(as_text=True),
-            '+ VALID +'
+            get_presure.return_value
         )
 
-    def test_get_wind(t):
-        res = t.client.get('/wind')
+    @patch(f'{SRC}.get_wind', autospec=True)
+    def test_get_wind(t, get_wind: Mock) -> None:
+        location_id = 'loc1'
+        get_wind.return_value = 'wind value'
+
+        res = t.client.get('/wind/loc1')
+
+        get_wind.assert_called_with(location_id)
         t.assertEqual(
             res.get_data(as_text=True),
-            '+ VALID +'
+            get_wind.return_value
         )
 
 
