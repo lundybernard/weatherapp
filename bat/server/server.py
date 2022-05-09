@@ -37,6 +37,9 @@ def start_server(host='0.0.0.0', port='5000', debug=True):
 
 
 def start_api_server(host='0.0.0.0', port='5000', debug=True):
+    '''Start a Swagger API server using connexion to generate the routes from
+    the api.yaml file
+    '''
     app = connexion.FlaskApp(__name__, specification_dir='../api/')
     app.add_api('api.yaml')
     app.run(host=host, port=port, debug=debug)

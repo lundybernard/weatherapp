@@ -55,6 +55,15 @@ def get_help(parser):
 
 
 def start(conf):
+    from .server import start_server
+    start_server(
+        host=conf.server.host,
+        port=conf.server.port,
+        debug=conf.server.debug,
+    )
+
+
+def start_api(conf):
     from .server import start_api_server
     start_api_server(
         host=conf.server.host,

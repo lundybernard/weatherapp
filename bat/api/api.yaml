@@ -38,11 +38,19 @@ paths:
             '200':
                 description: OK
 
-  /wind:
+  /wind/{location}:
     get:
         summary: returns wind record
         description: Return the wind record for a given location
         operationId: bat.lib.get_wind
+        parameters:
+        - name: location
+          description: location id
+          in: path
+          required: true
+          type: string
+          format: path
+
         responses:
             '200':
                 description: OK
